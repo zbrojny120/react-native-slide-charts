@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Svg, Defs } from 'react-native-svg'
-import YAxis from '../axis/YAxis'
-import XAxis from '../axis/XAxis'
-import AnimatedPath from '../../AnimatedPath'
-import { AreaChartProps } from './utils/types'
+import React, { Component } from 'react';
+import { Svg, Defs } from 'react-native-svg';
+import YAxis from '../axis/YAxis';
+import XAxis from '../axis/XAxis';
+import AnimatedPath from '../../AnimatedPath';
+import { AreaChartProps } from './utils/types';
 
 class AreaChart extends Component<AreaChartProps> {
-  animatedPathRef = React.createRef<any>()
-  animatedFillRef = React.createRef<any>()
+  animatedPathRef = React.createRef<any>();
+  animatedFillRef = React.createRef<any>();
 
   // Directly manipulate the line of the area and line to allow for non state based animation
   setNativeLineProps(line: string) {
@@ -21,19 +21,15 @@ class AreaChart extends Component<AreaChartProps> {
       paddingBottom,
       paddingLeft,
       paddingRight,
-    } = this.props
-    const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX =
-      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
-    if (
-      this.animatedPathRef.current != null &&
-      this.animatedFillRef.current != null
-    ) {
-      const topOfLine = height - axisHeight - paddingBottom
-      this.animatedPathRef.current.setNativeProps({ d: line })
+    } = this.props;
+    const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft;
+    const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight;
+    if (this.animatedPathRef.current != null && this.animatedFillRef.current != null) {
+      const topOfLine = height - axisHeight - paddingBottom;
+      this.animatedPathRef.current.setNativeProps({ d: line });
       this.animatedFillRef.current.setNativeProps({
         d: `${line} L ${stopX} ${topOfLine} L ${startX} ${topOfLine}`,
-      })
+      });
     }
   }
 
@@ -58,11 +54,10 @@ class AreaChart extends Component<AreaChartProps> {
       paddingRight,
       paddingTop,
       paddingBottom,
-    } = this.props
+    } = this.props;
 
-    const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft
-    const stopX =
-      data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight
+    const startX = data.length > 1 ? scaleX(data[0].x) : axisWidth + paddingLeft;
+    const stopX = data.length > 1 ? scaleX(data[data.length - 1].x) : width - paddingRight;
 
     return (
       <Svg {...{ width, height }}>
@@ -97,21 +92,19 @@ class AreaChart extends Component<AreaChartProps> {
         />
         <AnimatedPath
           ref={this.animatedFillRef}
-          d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(
-            yRange[0]
-          )}`}
+          d={`${line} L ${stopX} ${scaleY(yRange[0])} L ${startX} ${scaleY(yRange[0])}`}
           fill={fillColor || 'url(#gradient)'}
         />
         <AnimatedPath
           ref={this.animatedPathRef}
           d={line}
-          fill='transparent'
+          fill="transparent"
           stroke={chartLineColor}
           strokeWidth={chartLineWidth}
         />
       </Svg>
-    )
+    );
   }
 }
 
-export default AreaChart
+export default AreaChart;

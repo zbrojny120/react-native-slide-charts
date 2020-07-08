@@ -1,40 +1,35 @@
-import React, { Component } from 'react'
-import { StyleSheet, Animated, Platform, View } from 'react-native'
-import { CursorIndicatorProps } from './utils/types'
+import React, { Component } from 'react';
+import { StyleSheet, Animated, Platform, View } from 'react-native';
+import { CursorIndicatorProps } from './utils/types';
 
 class CursorIndicator extends Component<CursorIndicatorProps> {
   static defaultProps = {
     borderColor: '#FFF',
     backgroundColor: '#F4B700',
-  }
+  };
 
-  indicator = React.createRef<View>()
+  indicator = React.createRef<View>();
 
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   setNativeProps = (nativeProps: Object) => {
     if (this.indicator.current != null) {
-      this.indicator.current.setNativeProps(nativeProps)
+      this.indicator.current.setNativeProps(nativeProps);
     }
-  }
+  };
 
   render() {
-    const { cursorRadius, borderColor, backgroundColor } = this.props
+    const { cursorRadius, borderColor, backgroundColor } = this.props;
     const cursorStyle = {
       width: cursorRadius * 2,
       height: cursorRadius * 2,
       borderRadius: cursorRadius,
       borderColor,
       backgroundColor,
-    }
-    return (
-      <Animated.View
-        ref={this.indicator}
-        style={[styles.cursor, cursorStyle]}
-      />
-    )
+    };
+    return <Animated.View ref={this.indicator} style={[styles.cursor, cursorStyle]} />;
   }
 }
 
@@ -54,6 +49,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-})
+});
 
-export default CursorIndicator
+export default CursorIndicator;

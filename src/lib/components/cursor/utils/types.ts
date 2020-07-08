@@ -1,36 +1,36 @@
 export type CursorComponentProps = {
-  cursorMarkerWidth: number
-  cursorMarkerHeight: number
-  cursorWidth: number
-  cursorColor?: string
-  cursorBorderColor?: string
+  cursorMarkerWidth: number;
+  cursorMarkerHeight: number;
+  cursorWidth: number;
+  cursorColor?: string;
+  cursorBorderColor?: string;
   renderCursorMarker?: (
     props: CursorComponentProps & { ref: React.RefObject<any> }
-  ) => React.ReactNode | null
-  cursorLine?: boolean
-  displayCursor?: boolean
-}
+  ) => React.ReactNode | null;
+  cursorLine?: boolean;
+  displayCursor?: boolean;
+};
 
 export type CursorProps = {
-  cursorMarkerWidth?: number
-  cursorMarkerHeight?: number
-  cursorWidth?: number
-  cursorColor?: string
-  cursorBorderColor?: string
+  cursorMarkerWidth?: number;
+  cursorMarkerHeight?: number;
+  cursorWidth?: number;
+  cursorColor?: string;
+  cursorBorderColor?: string;
   renderCursorMarker?: (
     props: CursorComponentProps & { ref: React.RefObject<any> }
-  ) => React.ReactNode | null
-  cursorLine?: boolean
-  displayCursor?: boolean
-}
+  ) => React.ReactNode | null;
+  cursorLine?: boolean;
+  displayCursor?: boolean;
+};
 
 export type CursorIndicatorProps = {
-  cursorRadius: number
-  borderColor: string
-  backgroundColor: string
-}
+  cursorRadius: number;
+  borderColor: string;
+  backgroundColor: string;
+};
 
 export type CursorLineProps = {
-  width: number
-  backgroundColor: string
-}
+  width: number;
+  backgroundColor: string;
+};
